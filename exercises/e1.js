@@ -16,7 +16,7 @@
 
 // Your code goes here
 
-const getPromise = new Promise((resolve, reject) => {
+export const getPromise = new Promise((resolve) => {
   setTimeout(() => {
     resolve("The PROMISE was RESOLVED");
   }, 1000);
@@ -24,9 +24,8 @@ const getPromise = new Promise((resolve, reject) => {
 
 getPromise.then((resolution) => {
   console.log(resolution);
+  return resolution;
 });
-
-export { getPromise };
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-1"

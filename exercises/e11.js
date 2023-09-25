@@ -14,7 +14,7 @@
  */
 import fetch from "node-fetch";
 export const usersUrl = "http://localhost:3000/users/";
-fetch(usersUrl);
+
 /**
  * @task
  * Create the getLoginList(data) function that follows the requirements:
@@ -39,12 +39,7 @@ const getLoginList = (data) => {
  */
 
 // Your code goes here ...
-const getData = fetch(usersUrl).then((response) => {
-  if (!response.ok) {
-    throw new Error(`Network response was not ok: ${response.status}`);
-  }
-  return response.json();
-});
+const getData = fetch(usersUrl);
 
 /**
  * @task
@@ -58,11 +53,13 @@ const getData = fetch(usersUrl).then((response) => {
  */
 
 // Your code goes here ...
-export const result = getData.then((data) => {
-  const logins = getLoginList(data);
-  console.log(logins);
-  return logins;
-});
+export const result = getData
+  .then((res) => res.json())
+  .then((data) => {
+    const logins = getLoginList(data);
+    console.log(logins);
+    return logins;
+  });
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"
 // If the test has all tests passed, switch to the next exercise file

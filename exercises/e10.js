@@ -24,7 +24,7 @@ export const promiseArr = [promise1, promise2, promise3, promise4];
  */
 
 // Your code goes here...
-export const handlePromise1 = Promise.race([promise1, promise2, promise3])
+export const handlePromise1 = Promise.all(promiseArr)
   .then((value) => {
     return value;
   })
@@ -50,7 +50,7 @@ export const handlePromise1 = Promise.race([promise1, promise2, promise3])
 export const handlePromise2 = (promiseArr) => {
   return Promise.any(promiseArr)
     .then((result) => {
-      return "Promise 3 RESOLVED";
+      return result;
     })
     .catch((error) => {
       return error;
@@ -91,7 +91,7 @@ export const handlePromise3 = (promiseArr) => {
  */
 
 export const newPromiseArr = promiseArr.filter((promise) => {
-  return promise !== promise1 && promise !== promise2 && promise !== promise3; // Exclude promises 1, 2, and 3
+  return promise !== promise2 && promise !== promise3; // Exclude promises 1, 2, and 3
 });
 
 // Do NOT refactor or update handlePromise4 function, it's all set to work
